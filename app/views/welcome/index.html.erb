@@ -1,0 +1,21 @@
+<br>
+<h1 class="text-center">Blocipedia: Social, Markdown Wikis</h1>
+ <div class="jumbotron text-center">
+   <p>Create and share Markdown Wikis</p>
+   <% if !user_signed_in? %>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary'  %>
+    <% end %> today!
+ </div>
+
+ <div class="row">
+   <div class="col-md-6 text-center">
+     <h4>Create as many public wikis as you want!</h4>
+     <%= link_to image_tag("square.png", alt: "square") %>
+     <p>Free Plan</p>
+   </div>
+   <div class="col-md-6 text-center">
+     <h4>Create private wikis!</h4>
+     <%= link_to image_tag("square.png", alt: "square") %>
+     <p>Premium Plan</p>
+   </div>
+ </div>
