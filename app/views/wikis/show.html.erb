@@ -1,5 +1,10 @@
 <h1><%= @wiki.title %></h1>
-
+  <% if @wiki.private %>
+    <h3><%= "Private" %></h3>
+  <% else %>
+    <h3><%= "Public" %></h3>
+  <% end %>
+  
 <div class="row">
     <div class="col-md-8">
         <p><%= @wiki.body %></p>
