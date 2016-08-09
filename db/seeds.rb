@@ -1,21 +1,21 @@
-require 'random_data'
-
-5.times do
+#Random Data
+10.times do
   User.create!(
-    email:    RandomData.random_email,
-    password: RandomData.random_sentence
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
   )
 end
 users = User.all
 
-10.times do
+20.times do
   Wiki.create!(
-    title: 'Wiki title',
-    body: 'Body content'
+    title: Faker::Book.title,
+    body: Faker::Lorem.paragraph
   )
 end
 wikis = Wiki.all
 
+#Unique Users
 admin = User.create!(
   email:    'admin@example.com',
   password: 'helloworld',
@@ -24,9 +24,11 @@ admin = User.create!(
 
 member = User.create!(
   email:    'member@example.com',
-  password: 'helloworld'
+  password: 'helloworld',
+  role:     'standard'
 )
 
+#Output
 puts 'Seed finished'
 puts "#{Wiki.count} wikis created"
 puts "#{User.count} users created"
