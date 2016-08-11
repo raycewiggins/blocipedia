@@ -9,7 +9,19 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash.now[:alert] = "You are not authorized to perform this action. See About Page for more details"
+    flash.now[:alert] = 'You are not authorized to perform this action. See About Page for more details'
     render :show
+  end
+
+  def upgrade_account
+    @user = current_user
+    @user.role = 1
+    @user.save
+  end
+
+  def downgrade_account
+    @user = current_user
+    @user.role = 0
+    @user.save
   end
 end
