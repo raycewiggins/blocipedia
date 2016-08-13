@@ -7,6 +7,7 @@ gem 'pundit'
 gem 'faker'
 gem 'stripe'
 gem 'figaro', '1.0'
+gem 'redcarpet'
 
 gem 'rails', '4.2.5'
 gem 'sqlite3'

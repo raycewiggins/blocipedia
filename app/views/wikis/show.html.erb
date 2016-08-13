@@ -1,4 +1,4 @@
-<h1><%= @wiki.title %></h1>
+<h1><%= markdown(@wiki.title) %></h1>
 <p>Last updated at: <%= @wiki.updated_at %></p>
   <% if @wiki.private %>
     <h3><%= "Private" %></h3>
@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-8">
-        <p><%= @wiki.body %></p>
+        <p><%= markdown(@wiki.body) %></p>
     </div>
     <%= render partial: "wikis/private" %>
 </div>
