@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
 
   def downgrade_account
     @user = current_user
+    @wikis = @user.wikis
+    @wikis.each do |wiki|
+      wiki.update_attribute(:private, false)
+      wiki.save
+    end
     @user.role = 0
     @user.save
   end

@@ -13,6 +13,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
+    @wiki.user = current_user
 
     if @wiki.save
        flash[:notice] = "Wiki was saved successfully."
@@ -29,11 +30,10 @@ class WikisController < ApplicationController
 
    def update
      @wiki = Wiki.find(params[:id])
-     @wiki.title = params[:wiki][:title]
-     @wiki.body = params[:wiki][:body]
+     @wiki.assign_attributes(wiki_params)
      authorize @wiki
 
-     if @wiki.save && !@wiki.private?
+     if @wiki.save
        flash[:notice] = "Wiki was updated successfully."
        redirect_to @wiki
      else

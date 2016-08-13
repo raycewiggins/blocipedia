@@ -16,7 +16,11 @@
                 <div class="sign-in pull-right user-info">
                     <% if user_signed_in? %>
                     Signed in as:
-                    <strong><%= current_user.email %></strong>
+                    <strong><%= current_user.email %>
+                      <% if current_user.premium? %>
+                      <div class="glyphicon glyphicon-star-empty"></div>
+                      <% end %>
+                    </strong>
                     |
                     <%= link_to 'Profile', edit_user_registration_path, :class => 'navbar-link' %>
                     -

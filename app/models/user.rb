@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   def init
     self.role ||= :standard
   end
-  
+
   enum role: [:standard, :premium, :admin]
 
   devise :database_authenticatable, :registerable,

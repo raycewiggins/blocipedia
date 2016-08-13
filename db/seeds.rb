@@ -15,15 +15,21 @@ users = User.all
 end
 wikis = Wiki.all
 
-#Unique Users
+#Role Users
 admin = User.create!(
   email:    'admin@example.com',
   password: 'helloworld',
   role:     'admin'
 )
 
-member = User.create!(
-  email:    'member@example.com',
+premium = User.create!(
+  email:    'premium@example.com',
+  password: 'helloworld',
+  role:     'premium'
+)
+
+standard = User.create!(
+  email:    'standard@example.com',
   password: 'helloworld',
   role:     'standard'
 )
