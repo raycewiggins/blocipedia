@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :wikis
+  has_many :collaborations
+  has_many :wikis, through: :collaborations, source: :collaborable, source_type: :Wiki
   after_initialize :init
 
   def init
@@ -10,4 +11,12 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def self.update_users(user_string)
+    return User.none if user_string.blank?
+
+    user_string.split(',').map do |user|
+      User.find_or_create_by(email: user.strip)
+    end
+   end
 end

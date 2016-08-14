@@ -16,6 +16,7 @@ class WikisController < ApplicationController
     @wiki.user = current_user
 
     if @wiki.save
+       @wiki.users = User.update_users(params[:wiki][:users])
        flash[:notice] = "Wiki was saved successfully."
        redirect_to @wiki
     else
@@ -34,6 +35,7 @@ class WikisController < ApplicationController
      authorize @wiki
 
      if @wiki.save
+       @wiki.users = User.update_users(params[:wiki][:users])
        flash[:notice] = "Wiki was updated successfully."
        redirect_to @wiki
      else

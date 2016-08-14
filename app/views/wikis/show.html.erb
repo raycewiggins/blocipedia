@@ -1,10 +1,14 @@
 <h1><%= markdown(@wiki.title) %></h1>
-<p>Last updated at: <%= @wiki.updated_at %></p>
+<p>Last updated at <%= @wiki.updated_at.in_time_zone('US/Central').strftime("%-l:%M %p (CT) on %-m/%e/%Y") %></p>
   <% if @wiki.private %>
     <h3><%= "Private" %></h3>
   <% else %>
     <h3><%= "Public" %></h3>
   <% end %>
+
+<p class="lead">
+       <div>Collaborators: <%= render partial: "users/list", locals: { users: @wiki.users } %></div>
+     </p>
 
 <div class="row">
     <div class="col-md-8">
