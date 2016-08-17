@@ -5,6 +5,6 @@ class CreateCollaborations < ActiveRecord::Migration
        t.references :collaborable, polymorphic: true, index: true
        t.timestamps null: false
      end
-     add_foreign_key :collaborationss, :users
+     add_foreign_key :collaborations, :users
     end
 end
