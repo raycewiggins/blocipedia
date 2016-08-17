@@ -22,6 +22,7 @@ class WikiPolicy < ApplicationPolicy
        elsif user.role == 'premium'
          all_wikis = scope.all
          all_wikis.each do |wiki|
+           #wiki must be 1. public, 2. have the user as collaborator, or 3. have the user as it's author to view it
            if !wiki.private? || wiki.users.include?(user) || wiki.user_id == user.id
              wikis << wiki
            end
