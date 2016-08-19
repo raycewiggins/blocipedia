@@ -1,0 +1,20 @@
+<div class="col-md-4 text-center">
+
+  <h1>Premium Subscription</h1>
+
+  <%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+    <div id="error_explanation">
+      <p><%= flash[:error] %></p>
+    </div>
+    <% end %>
+    <h4>We're glad you decided to get a premium membership and we think you should be too. Just fill out the credit information below and you can be on your way!</h4>
+    <label class="amount">
+      <span>Amount: $15.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Premium Upgrade" data-amount="1500" data-locale="auto"></script>
+  <% end %>
+</div>
