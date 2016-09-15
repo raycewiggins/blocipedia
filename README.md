@@ -1,3 +1,3 @@
 # Blocipedia
 
-![alt text](Blocipedia Demo.jpg) "Blocipedia")
+![alt text](app/assets/images/blocipedia_demo.png) "Blocipedia")
