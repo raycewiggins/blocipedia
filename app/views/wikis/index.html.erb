@@ -1,22 +1,21 @@
-<h1>Wikis</h1>
+<div class="container">
+  <h1>Wikis</h1>
+  <p>Browse and contribute to the world's best online encyclopedia.</p>
+</div>
 
-<p>All of the wikis thus far</p>
 <% if current_user %>
-<div class="col-md-4 pull-right">
+  <div class="col-md-4 pull-right">
     <%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
-</div>
+  </div>
 <% end %>
-<div class="row">
-    <div class="col-md-8">
-        <% @wikis.each do |wiki| %>
-        <div class="media">
-            <div class="media-body">
-                <h4 class="media-heading">
-                    <%= link_to markdown(wiki.title), wiki %>
-                </h4>
-            </div>
-        </div>
-        <% end %>
+
+<div class="container">
+  <% @wikis.each do |wiki| %>
+      <% if wiki.private? %>
+        <h4 class="text-warning"><%= link_to markdown(wiki.title), wiki %></h4>
+      <% else %>
+        <h4><%= link_to markdown(wiki.title), wiki %></h4>
+      <% end %>
+    <% end %>
     </div>
-</div>
 </div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Wikis", wikis_path %></li>
+        <div class="sign-in pull-right user-info">
+          <% if user_signed_in? %>
+            Signed in as: <strong><%= current_user.name %></strong>
+            <% if current_user.premium? %>
+              <div class="glyphicon glyphicon-star-empty"></div>
+            <% end %> |
+              <%= link_to "Profile", collaborator_path(id: current_user.id) %>
+              -
+              <%= link_to 'Settings', edit_user_registration_path %>
+              -
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path %>
+          <% end %>
+        </div>
+    </ul>
+</div>
